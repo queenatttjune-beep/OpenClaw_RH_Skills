@@ -168,12 +168,36 @@ def extract_task(endpoint: str, output_type: str) -> str:
         return "start-end-to-video"
     if "reference-to-video" in suffix or "refrence-to-video" in suffix:
         return "reference-to-video"
+    if "multimodal-video" in suffix or "multimodal-to-video" in suffix:
+        return "multimodal-video"
+    if "image-audio-to-video" in suffix or "lip-sync-video" in suffix:
+        return "lip-sync-video"
+    if "video-to-video" in suffix or "video-restyling" in suffix:
+        return "video-edit"
+    if "transition" in suffix:
+        return "video-transition"
+    if "effects" in suffix:
+        return "video-effects"
+    if "fps-increaser" in suffix:
+        return "video-fps-increase"
+    if "subtitle-erase" in endpoint:
+        return "video-subtitle-erase"
     if "video-extend" in suffix:
+        return "video-extend"
+    if suffix == "extend":
         return "video-extend"
     if "edit-video" in suffix or "video-edit" in suffix:
         return "video-edit"
     if "motion-control" in suffix:
         return "motion-control"
+    if "text-to-world" in suffix:
+        return "text-to-world"
+    if "multi-image-to-world" in suffix:
+        return "multi-image-to-world"
+    if "image-to-world" in suffix:
+        return "image-to-world"
+    if "video-to-world" in suffix:
+        return "video-to-world"
     if "text-to-3d" in suffix:
         return "text-to-3d"
     if "multi-image-to-3d" in suffix:
@@ -188,10 +212,18 @@ def extract_task(endpoint: str, output_type: str) -> str:
         return "video-to-text"
     if "speech" in suffix or "speech" in endpoint:
         return "text-to-speech"
-    if "music" in suffix:
+    if "music" in suffix or "suno" in endpoint or "generate-song" in suffix or "generate-bgm" in suffix:
         return "music-generation"
-    if "voice-clone" in suffix:
+    if "instrumental" in suffix:
+        return "music-generation"
+    if "lyrics" in suffix:
+        return "lyrics-generation"
+    if "extend-song" in suffix:
+        return "song-extend"
+    if "vocal-clone" in suffix or "voice-clone" in suffix:
         return "voice-clone"
+    if "voice-design" in suffix:
+        return "voice-design"
     if "upload-character" in suffix:
         return "upload-character"
 
