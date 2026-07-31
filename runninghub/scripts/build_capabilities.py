@@ -148,10 +148,16 @@ def extract_task(endpoint: str, output_type: str) -> str:
     suffix = parts[-1] if len(parts) > 1 else endpoint
 
     # Normalize common patterns
-    if "upscale" in suffix or "upscale" in endpoint:
+    if "upscale" in suffix or "upscale" in endpoint or "gigapixel" in endpoint:
         if output_type == "video":
             return "video-upscale"
         return "image-upscale"
+    if "video-frame-interpolation" in endpoint:
+        return "video-frame-interpolation"
+    if "video-denoise" in endpoint:
+        return "video-denoise"
+    if "video-proteus" in endpoint or "video-starlight" in endpoint or "video-astra" in endpoint:
+        return "video-upscale"
     if suffix in ("edit", "edit-ultra"):
         return "image-to-image"
     if "image-edit" in suffix:
@@ -167,6 +173,8 @@ def extract_task(endpoint: str, output_type: str) -> str:
     if "start-end" in suffix or "start-to-end" in suffix:
         return "start-end-to-video"
     if "reference-to-video" in suffix or "refrence-to-video" in suffix:
+        return "reference-to-video"
+    if "omni-reference" in suffix:
         return "reference-to-video"
     if "multimodal-video" in suffix or "multimodal-to-video" in suffix:
         return "multimodal-video"
@@ -184,8 +192,12 @@ def extract_task(endpoint: str, output_type: str) -> str:
         return "video-subtitle-erase"
     if "video-extend" in suffix:
         return "video-extend"
+    if "video-extension" in suffix:
+        return "video-extend"
     if suffix == "extend":
         return "video-extend"
+    if "video-translate" in suffix:
+        return "video-translate"
     if "edit-video" in suffix or "video-edit" in suffix:
         return "video-edit"
     if "motion-control" in suffix:
@@ -210,8 +222,10 @@ def extract_task(endpoint: str, output_type: str) -> str:
         return "image-to-text"
     if "video-to-text" in suffix:
         return "video-to-text"
-    if "speech" in suffix or "speech" in endpoint:
+    if "speech" in suffix or "speech" in endpoint or "tts" in suffix:
         return "text-to-speech"
+    if "doubao-seed-audio" in endpoint:
+        return "audio-generation"
     if "music" in suffix or "suno" in endpoint or "generate-song" in suffix or "generate-bgm" in suffix:
         return "music-generation"
     if "instrumental" in suffix:
@@ -224,6 +238,8 @@ def extract_task(endpoint: str, output_type: str) -> str:
         return "voice-clone"
     if "voice-design" in suffix:
         return "voice-design"
+    if "short-play" in endpoint:
+        return "short-play-video"
     if "upload-character" in suffix:
         return "upload-character"
 
