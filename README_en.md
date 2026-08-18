@@ -67,8 +67,8 @@ When generating video, the assistant presents 8 curated models to choose from:
 > 4. 🎬 **Google Veo 3.1 Pro** — Cinematic quality
 > 5. ✨ **Vidu Q3 Pro** — Unique stylized look
 > 6. ⭐ **Sora** — Sora-class engine
-> 7. 🌊 **MiniMax Hailuo** — Fast with fine details
-> 8. 🌱 **Seedance 2.0** — Top quality, up to 15s + auto audio + real people, up to 4K
+> 7. 🌊 **MiniMax H3** — Up to 2K and 15s, fine details
+> 8. 🌱 **Seedance 2.5** — Top quality, up to 30s + auto audio + real people, up to 4K
 
 Pick a number to start, or the default (Google Veo 3.1 Fast) is used automatically.
 
@@ -76,13 +76,13 @@ Pick a number to start, or the default (Google Veo 3.1 Fast) is used automatical
 
 When generating images, the assistant presents 5 curated models to choose from:
 
-> 1. 🎨 **RH Image PRO** — Best overall quality, recommended default
-> 2. ⚡ **RH Image V2** — Fastest and most affordable
-> 3. 🎭 **Youchuan v7** — Midjourney-style, cinematic look
+> 1. 🎨 **Nano Banana Pro** — Best overall quality, recommended default
+> 2. ⚡ **Nano Banana 2** — Fastest and most affordable
+> 3. 🎭 **Midjourney v8** — Cinematic look
 > 4. 🤖 **GPT Image 2** — Strong prompt understanding and reliable image editing
-> 5. 📷 **Seedream v5** — ByteDance, strong photorealistic feel
+> 5. 📷 **Seedream v5 Pro** — ByteDance, strong photorealistic feel
 
-Pick a number to start, or the default (RH Image PRO) is used automatically.
+Pick a number to start, or the default (Nano Banana Pro) is used automatically.
 
 ## Architecture
 
