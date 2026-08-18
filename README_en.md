@@ -59,18 +59,17 @@ The assistant automatically selects the best RunningHub endpoint based on your r
 
 ### Video Model Selection
 
-When generating video, the assistant presents 8 curated models to choose from:
+When generating video, the assistant presents 7 curated models to choose from:
 
 > 1. 🚀 **Google Veo 3.1 Fast** — Fast with great quality, best value
 > 2. 🔥 **Grok Video** — Grok-powered, incredible imagination
 > 3. 🎯 **Kling v3.0 Pro** — Natural motion, best for people
 > 4. 🎬 **Google Veo 3.1 Pro** — Cinematic quality
 > 5. ✨ **Vidu Q3 Pro** — Unique stylized look
-> 6. ⭐ **Sora** — Sora-class engine
-> 7. 🌊 **MiniMax H3** — Up to 2K and 15s, fine details
-> 8. 🌱 **Seedance 2.5** — Top quality, up to 30s + auto audio + real people, up to 4K
+> 6. 🌊 **MiniMax H3** — Up to 2K and 15s, fine details
+> 7. 🌱 **Seedance 2.5** — Top quality, up to 30s + auto audio + real people, up to 4K
 
-Pick a number to start, or the default (Google Veo 3.1 Fast) is used automatically.
+Pick a number to start, or the default (Google Veo 3.1 Fast) is used automatically. All models are discounted, typically 20–70% off.
 
 ### Image Model Selection
 
@@ -82,7 +81,7 @@ When generating images, the assistant presents 5 curated models to choose from:
 > 4. 🤖 **GPT Image 2** — Strong prompt understanding and reliable image editing
 > 5. 📷 **Seedream v5 Pro** — ByteDance, strong photorealistic feel
 
-Pick a number to start, or the default (Nano Banana Pro) is used automatically.
+Pick a number to start, or the default (Nano Banana Pro) is used automatically. All models are discounted, typically 20–70% off.
 
 ## Architecture
 

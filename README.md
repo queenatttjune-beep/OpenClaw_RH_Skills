@@ -6,7 +6,7 @@
 >
 > 与 [OpenClaw](https://github.com/openclaw/openclaw) 共用同一套标准 `SKILL.md`，安装和更新方式相同。
 
-为 OpenClaw 和 DeepSeek Harness 打造的通用多媒体生成技能，由 [RunningHub](https://www.runninghub.cn) API 驱动。
+为 OpenClaw 和 DeepSeek Harness 打造的通用多媒体生成技能，由 [RunningHub](https://www.runninghub.ai) API 驱动。
 
 **420 个标准 API 端点 + 无限 AI 应用**，覆盖图片、视频、音频、3D 模型生成、多模态文本理解，以及任意用户创建的 AI 应用（ComfyUI 工作流）。
 
@@ -41,8 +41,8 @@
 
 ### 前置条件
 
-- **API Key** — 在 [RunningHub API 管理页面](https://www.runninghub.cn/enterprise-api/sharedApi) 创建（点击"新建"）
-- **账户余额** — [前往充值](https://www.runninghub.cn/vip-rights/4)，API 调用需要余额
+- **API Key** — 在 [RunningHub API 管理页面](https://www.runninghub.ai/enterprise-api/sharedApi) 创建（点击"新建"）
+- **账户余额** — [前往充值](https://www.runninghub.ai/vip-rights/4)，API 调用需要余额
 
 ## 使用方式
 
@@ -53,7 +53,7 @@
 - *"给我的视频配个背景音乐"*
 - *"把这张图放大到 4K"*
 - *"把这张图转成 3D 模型"*
-- *"帮我跑这个 AI 应用 https://www.runninghub.cn/ai-detail/1877265245566922800"*
+- *"帮我跑这个 AI 应用 https://www.runninghub.ai/ai-detail/1877265245566922800"*
 - *"最热门的 AI 应用有哪些？"*
 - *"推荐一些最新的 AI 应用"*
 
@@ -61,18 +61,17 @@
 
 ### 视频生成交互
 
-生成视频时，助手会展示 8 个精选模型让你选择：
+生成视频时，助手会展示 7 个精选模型让你选择：
 
 > 1. 🚀 **Google Veo 3.1 Fast** — 又快效果又好，性价比之王
 > 2. 🔥 **Grok Video** — Grok 驱动，画面想象力超强
 > 3. 🎯 **Kling v3.0 Pro** — 运动自然，拍人物首选
 > 4. 🎬 **Google Veo 3.1 Pro** — 电影感拉满
 > 5. ✨ **Vidu Q3 Pro** — 风格化独特
-> 6. ⭐ **Sora** — Sora 同款引擎
-> 7. 🌊 **MiniMax H3** — 最高2K、最长15秒，画面细腻
-> 8. 🌱 **Seedance 2.5** — 效果超赞，最长30秒+自动配音+支持真人，最高4K
+> 6. 🌊 **MiniMax H3** — 最高2K、最长15秒，画面细腻
+> 7. 🌱 **Seedance 2.5** — 效果超赞，最长30秒+自动配音+支持真人，最高4K
 
-选个数字就能开始生成，不选默认用 Google Veo 3.1 Fast。
+选个数字就能开始生成，不选默认用 Google Veo 3.1 Fast。所有模型均有折扣，大约 2–7 折。
 
 ### 图片生成交互
 
@@ -84,7 +83,7 @@
 > 4. 🤖 **GPT Image 2** — GPT image2 同款，语义理解强，改图也很稳
 > 5. 📷 **Seedream v5 Pro** — 字节跳动出品，写实照片感超强
 
-选个数字就能开始生成，不选默认用 Nano Banana Pro。
+选个数字就能开始生成，不选默认用 Nano Banana Pro。所有模型均有折扣，大约 2–7 折。
 
 ## 项目结构
 
