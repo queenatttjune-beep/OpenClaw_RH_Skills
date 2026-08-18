@@ -1,25 +1,29 @@
-# RHClaw — RunningHub Skill for OpenClaw
+# RHClaw — RunningHub Skill for OpenClaw / DeepSeek Harness
 
 [中文](./README.md)
 
-An [OpenClaw](https://github.com/openclaw/openclaw) skill that brings multimedia generation capabilities — including image, video, audio, 3D, and text — to conversational AI, powered by 394 [RunningHub](https://www.runninghub.cn) API endpoints. Built with zero external dependencies (pure Python 3 + curl), it lets users create rich media content through natural language, with support for both standard model APIs and custom ComfyUI workflows (AI Applications).
+> ## Now supports [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+>
+> Same standard `SKILL.md` as [OpenClaw](https://github.com/openclaw/openclaw). Install and update the same way.
+
+An OpenClaw and DeepSeek Harness skill that brings multimedia generation capabilities — including image, video, audio, 3D, and text — to conversational AI, powered by 420 [RunningHub](https://www.runninghub.cn) API endpoints. Built with zero external dependencies (pure Python 3 + curl), it lets users create rich media content through natural language, with support for both standard model APIs and custom ComfyUI workflows (AI Applications).
 
 ## Capabilities
 
 | Category | Endpoints | Tasks |
 |----------|-----------|-------|
-| **Image** | 97 | text-to-image, image-to-image, image upscale, Midjourney-style |
-| **Video** | 213 | text-to-video, image-to-video, start-end frames, video extend/edit, motion control, multimodal video |
+| **Image** | 102 | text-to-image, image-to-image, image upscale, Midjourney-style |
+| **Video** | 230 | text-to-video, image-to-video, start-end frames, video extend/edit, motion control, multimodal video |
 | **Audio** | 20 | text-to-speech, music generation, voice clone |
 | **3D** | 16 | text-to-3D, image-to-3D, multi-image-to-3D |
-| **Text** | 48 | image-to-text, video-to-text, text-to-text |
+| **Text** | 52 | image-to-text, video-to-text, text-to-text |
 | **AI Apps** | Unlimited | Run any RunningHub AI Application (custom ComfyUI workflow) |
 
 ## Quick Start
 
 ### Install
 
-In your OpenClaw chat, say:
+In your OpenClaw or DeepSeek Harness chat, say:
 
 > Install the RunningHub skill from https://github.com/HM-RunningHub/OpenClaw_RH_Skills
 
@@ -27,7 +31,7 @@ The assistant will clone the repo, copy files to the workspace, and guide you th
 
 ### Update
 
-When a new version is available, say in your OpenClaw chat:
+When a new version is available, say in your OpenClaw or DeepSeek Harness chat:
 
 > Update from https://github.com/HM-RunningHub/OpenClaw_RH_Skills and re-read @runninghub/SKILL.md
 
@@ -84,9 +88,9 @@ Pick a number to start, or the default (RH Image PRO) is used automatically.
 
 ```
 runninghub/
-├── SKILL.md                        # OpenClaw skill definition (routing table + examples)
+├── SKILL.md                        # Skill definition for OpenClaw / DeepSeek Harness (routing table + examples)
 ├── scripts/
-│   ├── runninghub.py               # Standard model API client (394 endpoints)
+│   ├── runninghub.py               # Standard model API client (420 endpoints)
 │   ├── runninghub_app.py           # AI Application client (custom ComfyUI workflows)
 │   └── build_capabilities.py       # Generates capabilities.json from models_registry.json
 └── data/

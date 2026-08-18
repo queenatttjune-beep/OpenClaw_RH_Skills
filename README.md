@@ -1,27 +1,31 @@
-# RHClaw — RunningHub Skill for OpenClaw
+# RHClaw — RunningHub Skill for OpenClaw / DeepSeek Harness
 
 [English](./README_en.md)
 
-为 [OpenClaw](https://github.com/openclaw/openclaw) 打造的通用多媒体生成技能，由 [RunningHub](https://www.runninghub.cn) API 驱动。
+> ## 现已支持 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
+>
+> 与 [OpenClaw](https://github.com/openclaw/openclaw) 共用同一套标准 `SKILL.md`，安装和更新方式相同。
 
-**394 个标准 API 端点 + 无限 AI 应用**，覆盖图片、视频、音频、3D 模型生成、多模态文本理解，以及任意用户创建的 AI 应用（ComfyUI 工作流）。
+为 OpenClaw 和 DeepSeek Harness 打造的通用多媒体生成技能，由 [RunningHub](https://www.runninghub.cn) API 驱动。
+
+**420 个标准 API 端点 + 无限 AI 应用**，覆盖图片、视频、音频、3D 模型生成、多模态文本理解，以及任意用户创建的 AI 应用（ComfyUI 工作流）。
 
 ## 能力一览
 
 | 类别 | 端点数 | 支持任务 |
 |------|--------|----------|
-| **图片** | 97 | 文生图、图生图、图片放大、Midjourney 风格 |
-| **视频** | 213 | 文生视频、图生视频、首尾帧生成、视频续写/编辑、运动控制、多模态视频 |
+| **图片** | 102 | 文生图、图生图、图片放大、Midjourney 风格 |
+| **视频** | 230 | 文生视频、图生视频、首尾帧生成、视频续写/编辑、运动控制、多模态视频 |
 | **音频** | 20 | 文字转语音、音乐生成、声音克隆 |
 | **3D** | 16 | 文字转 3D、图片转 3D、多图转 3D |
-| **文本** | 48 | 图片理解、视频理解、文本处理 |
+| **文本** | 52 | 图片理解、视频理解、文本处理 |
 | **AI 应用** | 无限 | 运行任意 RunningHub AI 应用（自定义 ComfyUI 工作流） |
 
 ## 快速开始
 
 ### 安装
 
-在 OpenClaw 对话中发送：
+在 OpenClaw 或 DeepSeek Harness 对话中发送：
 
 > 从 https://github.com/HM-RunningHub/OpenClaw_RH_Skills 安装 RunningHub 技能
 
@@ -29,7 +33,7 @@
 
 ### 更新
 
-当技能有新版本时，在 OpenClaw 对话中发送：
+当技能有新版本时，在 OpenClaw 或 DeepSeek Harness 对话中发送：
 
 > 从 https://github.com/HM-RunningHub/OpenClaw_RH_Skills 更新 并重新读取@runninghub/SKILL.md
 
@@ -86,9 +90,9 @@
 
 ```
 runninghub/
-├── SKILL.md                        # OpenClaw 技能定义（路由表 + 示例 + 交互规则）
+├── SKILL.md                        # 技能定义（OpenClaw / DeepSeek Harness，路由表 + 示例 + 交互规则）
 ├── scripts/
-│   ├── runninghub.py               # 标准模型 API 客户端（394 端点）
+│   ├── runninghub.py               # 标准模型 API 客户端（420 端点）
 │   ├── runninghub_app.py           # AI 应用客户端（自定义 ComfyUI 工作流）
 │   └── build_capabilities.py       # 从 models_registry.json 生成 capabilities.json
 └── data/
