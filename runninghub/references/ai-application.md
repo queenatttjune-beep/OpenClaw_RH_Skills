@@ -1,5 +1,7 @@
 # AI Application
 
+> **DSH 适配（本地改动）**：DSH 没有 `message` 工具，也不能写 `/tmp/openclaw`。下文所有「用 message 工具发封面图/发进度通知/交付结果」改为：进度用文字回复；封面图和产物写工作区 `rh-output/` 后报绝对路径。所有 `-o $(pwd)/rh-output/...` 和 `--file "...=$(pwd)/rh-output/..."` 一律改成 `$(pwd)/rh-output/...`。
+
 **Use `runninghub_app.py`** (NOT `runninghub.py`) for AI app tasks. AI apps are user-created ComfyUI workflows hosted on RunningHub.
 
 ## When to Trigger
@@ -30,20 +32,20 @@ python3 {baseDir}/scripts/runninghub_app.py --list --sort RECOMMEND --size 10 --
 
 The output is JSON with an `apps` array. Each app has: `title`, `description`, `webappId`, and `coverFile` (local path to downloaded cover image).
 
-**Present apps to the user with cover images**. For EACH app, use the `message` tool to send its cover image, then describe it:
+**Present apps to the user**. For EACH app, 描述标题与说明（DSH 中封面图已下载到工作区 `rh-output/`，路径在 `coverFile` 字段；如需展示可 read_image 确认后报路径）：
 
 ```
 For each app in the list:
-  1. Call message tool: { "action": "send", "text": "1. 全能图片2.0 — 多功能图片生成", "media": "/tmp/openclaw/rh-output/app_covers/cover_xxx.png" }
+  1. 描述：标题 + 说明（封面路径见 coverFile）
   2. Move to next app
 After all apps, send a final message:
-  { "action": "send", "text": "想试试哪个？告诉我编号就行！也可以说'下一页'看更多～" }
+  "想试试哪个？告诉我编号就行！也可以说'下一页'看更多～"
 ```
 
-Alternatively, if sending many images is too slow, you can send just the **first 3 covers** via `message` tool and list the rest as text.
+Alternatively, if listing many apps, describe the **first 3** with details and list the rest as text.
 
 Rules:
-- ALWAYS send cover images via `message` tool — NEVER show cover URLs or file paths as text
+- NEVER show cover URLs or raw webappId to the user
 - Show title as bold, description if available
 - NEVER show raw webappId to the user
 - If `coverFile` is missing for an app (download failed), just show the title as text
@@ -97,7 +99,7 @@ Rules:
 
 ## Step 4 — Notify user, then execute
 
-**Before running the script**, ALWAYS send a progress notification via `message` tool:
+**Before running the script**, ALWAYS send a progress notification（DSH 中直接回复一句文字）:
 > "好的，开始运行 AI 应用啦！工作流生成通常需要几分钟，请稍等～ 🎬"
 
 This is critical — AI app tasks are slow, and users need to know the task has started. Send the notification FIRST, then execute the script.
@@ -108,13 +110,13 @@ Map user's modifications to `--node` and `--file` arguments:
 # Modify text node + upload image
 python3 {baseDir}/scripts/runninghub_app.py --run WEBAPP_ID \
   --node "52:prompt=make her hair into a short bob cut" \
-  --file "39:image=/tmp/openclaw/rh-output/photo.jpg" \
-  -o /tmp/openclaw/rh-output/app_result_$(date +%s).png
+  --file "39:image=$(pwd)/rh-output/photo.jpg" \
+  -o $(pwd)/rh-output/app_result_$(date +%s).png
 
 # Text-only modification
 python3 {baseDir}/scripts/runninghub_app.py --run WEBAPP_ID \
   --node "52:prompt=a boy with sunglasses" \
-  -o /tmp/openclaw/rh-output/app_result_$(date +%s).png
+  -o $(pwd)/rh-output/app_result_$(date +%s).png
 ```
 
 For GPU-intensive apps, the user can request a larger instance:
@@ -123,7 +125,7 @@ For GPU-intensive apps, the user can request a larger instance:
 
 ## Step 5 — Deliver results
 
-Same rules as standard API: use `message` tool, report cost, suggest next steps.
+Same rules as standard API: 报产物绝对路径、报成本、建议下一步（DSH 中无需 message 工具）。
 
 If the app outputs multiple files, deliver all of them.
 
@@ -136,19 +138,19 @@ python3 {baseDir}/scripts/runninghub_app.py --info 1877265245566922800
 # Run AI app with text modification
 python3 {baseDir}/scripts/runninghub_app.py --run 1877265245566922800 \
   --node "52:prompt=a boy with sunglasses" \
-  -o /tmp/openclaw/rh-output/app_$(date +%s).png
+  -o $(pwd)/rh-output/app_$(date +%s).png
 
 # Run AI app with file upload + text modification
 python3 {baseDir}/scripts/runninghub_app.py --run 1877265245566922800 \
-  --file "39:image=/tmp/openclaw/rh-output/photo.jpg" \
+  --file "39:image=$(pwd)/rh-output/photo.jpg" \
   --node "52:prompt=change hairstyle to short bob" \
-  -o /tmp/openclaw/rh-output/app_$(date +%s).png
+  -o $(pwd)/rh-output/app_$(date +%s).png
 
 # Run on a larger GPU instance
 python3 {baseDir}/scripts/runninghub_app.py --run 1877265245566922800 \
   --node "52:prompt=a girl dancing" \
   --instance-type plus \
-  -o /tmp/openclaw/rh-output/app_$(date +%s).png
+  -o $(pwd)/rh-output/app_$(date +%s).png
 ```
 
 Flags: `--node nodeId:fieldName=value`, `--file nodeId:fieldName=/path`, `--instance-type default|plus`, `-o path`

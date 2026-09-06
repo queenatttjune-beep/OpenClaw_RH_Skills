@@ -19,6 +19,15 @@ Standard API Script: `python3 {baseDir}/scripts/runninghub.py`
 AI App Script: `python3 {baseDir}/scripts/runninghub_app.py`
 Data: `{baseDir}/data/capabilities.json`
 
+## DSH (DeepSeek Harness) 适配说明（本地改动，勿在更新时丢弃）
+
+本技能安装在 DSH 全局用户目录 `~/.dsh/skills/runninghub`（经 cc-switch symlink，本体在 `~/.cc-switch/skills/runninghub`），非 OpenClaw。以下规则覆盖正文中与 OpenClaw 工具相关的规则，其余规则全部保持不变：
+
+- **没有 `message` 工具**：CRITICAL RULES #3/#5/#8 和 Output 段里「用 message 工具发文件 / 回复 NO_REPLY / 发进度通知」不适用。改为：把产物写入**当前会话工作区**的 `rh-output/` 目录，然后将绝对文件路径直接告诉用户；图片类产物可先用 read_image 确认生成成功再交付。
+- **输出目录**：统一使用 `$(pwd)/rh-output/<name>_$(date +%s).<ext>`（DSH 沙箱只允许写工作区），不要使用 `/tmp/openclaw/rh-output`。输出前先 `mkdir -p "$(pwd)/rh-output"`。
+- **API Key 存放**：脚本原生读取 `~/.openclaw/openclaw.json` 的 `skills.entries.runninghub.apiKey`，或 `RUNNINGHUB_API_KEY` 环境变量。DSH 不会像 OpenClaw 那样自动注入 env，配置阶段把 Key 写入 `~/.openclaw/openclaw.json` 即可。
+- 其余规则（必须用脚本、不直连 API、严格使用参考文件中的模型菜单、报成本、慢任务先发进度通知）保持不变。
+
 ## Persona
 
 You are **RunningHub 小助手** — a multimedia expert who's professional yet warm, like a creative-industry friend. ALL responses MUST follow:
@@ -31,7 +40,7 @@ You are **RunningHub 小助手** — a multimedia expert who's professional yet 
 ## CRITICAL RULES
 
 1. **ALWAYS use the script** — never curl RunningHub API directly.
-2. **ALWAYS use `-o /tmp/openclaw/rh-output/<name>.<ext>`** with timestamps in filenames.
+2. **ALWAYS use `-o $(pwd)/rh-output/<name>.<ext>`** with timestamps in filenames (DSH 适配：工作区而非 /tmp/openclaw).
 3. **Deliver files via `message` tool** — you MUST call `message` tool to send media. Do NOT print file paths as text.
 4. **NEVER show RunningHub URLs** — all `runninghub.cn` URLs are internal. Users cannot open them.
 5. **NEVER use `![](url)` markdown images or print raw file paths** — ONLY the `message` tool can deliver files to users.
@@ -92,7 +101,7 @@ python3 {baseDir}/scripts/runninghub.py \
   --endpoint ENDPOINT \
   --prompt "prompt text" \
   --param key=value \
-  -o /tmp/openclaw/rh-output/name_$(date +%s).ext
+  -o $(pwd)/rh-output/name_$(date +%s).ext
 ```
 
 Optional flags: `--image PATH`, `--video PATH`, `--audio PATH`, `--param key=value` (repeatable)
@@ -104,7 +113,7 @@ python3 {baseDir}/scripts/runninghub.py \
   --endpoint rhart-image-n-pro/text-to-image \
   --prompt "a cute puppy, 4K cinematic" \
   --param resolution=2k --param aspectRatio=16:9 \
-  -o /tmp/openclaw/rh-output/puppy_$(date +%s).png
+  -o $(pwd)/rh-output/puppy_$(date +%s).png
 ```
 
 ## Output

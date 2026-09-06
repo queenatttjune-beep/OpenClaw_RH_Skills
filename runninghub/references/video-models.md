@@ -69,7 +69,7 @@ Skip menu ONLY if: user named a specific model, or said "跟上次一样" / "再
 
 ## After Model Is Chosen
 
-**Before running the script**, ALWAYS send a progress notification via `message` tool:
+**Before running the script**, ALWAYS send a progress notification（DSH 中直接回复一句文字）:
 > "好嘞，开始用 XX模型 生成视频啦！一般需要几分钟，请稍等～ 🎬"
 
 This is critical — video generation takes 1-5 minutes and users need to know the task has started. Send the notification FIRST, then execute the script.
